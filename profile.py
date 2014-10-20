@@ -18,8 +18,6 @@ class Profile:
         tweets = twitter.user_timeline(self.user, count=100)
         return tweets
 
-#        for tweet in public_tweets:
-#            print tweet.text.encode('utf8')
 
     def getProfile(self):
         #TODO get profile
