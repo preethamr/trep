@@ -1,8 +1,11 @@
-from flask import Flask
+from flask import Flask, jsonify
+from flask.ext.cors import CORS
 from flask.ext.restful import reqparse, abort, Api, Resource
 from tprofile import Profile
+import json
 
 app = Flask(__name__)
+cors = CORS(app)
 api = Api(app)
 
 
@@ -30,7 +33,7 @@ def isValid(user):
 class User(Resource):
     def get(self, user):
         abort_if_user_doesnt_exist(user)
-        return userInfo(user)
+        return jsonify(userInfo(user))
 
 
 
@@ -39,15 +42,15 @@ class User(Resource):
 class Tweets(Resource):
     def get(self, user):
         abort_if_user_doesnt_exist(user)
-        return userTweets(user)
+        return jsonify(tweets = userTweets(user))
 
 
 ##
 ## Setup the Api resource routing here
 ##
 api.add_resource(Tweets, '/tweets/<string:user>')
-api.add_resource(User, '/handle/<string:user>')
+api.add_resource(User, '/profile/<string:user>')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0')

@@ -25,7 +25,7 @@ class Profile:
 
         # Paginate
         for p in xrange(1, pages+1):
-            tweets.extend([t.text for t in Profile.twitter.user_timeline(self.sname, count=Profile.max_page_size, page=p)])
+            tweets.extend([t._json for t in Profile.twitter.user_timeline(self.sname, count=Profile.max_page_size, page=p)])
 
         return tweets
 
@@ -43,4 +43,3 @@ class Profile:
         except tweepy.TweepError, e:
             return False
         return True
-        

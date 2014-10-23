@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Twitter Reputaion Checkr</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- Bootstrap -->
+ <link href="css/bootstrap.min.css" rel="stylesheet">
+ <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+ <link href="css/custom.css" rel="stylesheet">
+ <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media 
+ queries -->
+ <!-- WARNING: Respond.js doesn't work if you view the page  via file:// -->
+ <!--[if lt IE 9]>
+ <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/
+ html5shiv.js"></script>
+ <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/
+ respond.min.js"></script>
+ <![endif]-->
+ </head>
+ <body>
+<div class="container-fluid" id='content' ng-app='TRep' ng-controller='ProfileController'>
+	<nav class="navbar navbar-default" role="navigation">
+	 <div class="navbar-header">
+	 <a class="navbar-brand" href="#">Twitter Profile</a>
+	 </div>
+	 <div>
+	 <form class="navbar-form navbar-left" role="search">
+	 <div class="form-group">
+	 <input type="text" class="form-control" placeholder="@TwitterHandle" ng-model='inHandle'>
+	 </div>
+	 <button type="submit" class="btn btn-primary " ng-click='fetchProfile()'>
+		 <span class="glyphicon glyphicon-search"></span>
+		 Profile
+	 </button>
+	 </form> 
+	 <button type="button" class="btn btn-danger navbar-btn" ng-click='fetchScore()'>
+		 <span class="glyphicon glyphicon-star"></span>
+		  Score 
+	 </button>
+	 </div>
+	</nav>
+        <div id="container">
+	  <!--div class="row-fluid"-->
+	      <!--div class="span2"-->
+              <div class="sidebar  sidebar-content ng-hide" ng-show="profile">
+				<img ng-src={{profile.image_original}} class="img-responsive centered">
+				<br>
+				<br>
+				<br>
+				<p  class="text-center">{{profile.description}}<br></p>
+				<p class="text-center" ng-switch on="profile.verified">
+				 <b> {{profile.name}} </b>
+					<span class="glyphicon glyphicon-ban-circle" ng-switch-when="false"></span>
+					<span class="glyphicon glyphicon-ok-circle" ng-switch-when="true"></span>
+				</p>
+				<p class="text-center">
+				<em>@{{profile.screen_name}}</em><br>
+
+				<span class="glyphicon glyphicon-home">
+				{{profile.location}}
+				</span>
+				<br>
+
+
+				<span class="glyphicon glyphicon-time">
+				{{profile.created_at | epoch | date : 'mediumDate'}}
+				</span>
+				<br>
+				<br>
+				<br>
+
+				<span class="glyphicon glyphicon-magnet">
+				{{profile.followers_count}}
+				</span>
+				<br>
+				<br>
+
+				<span class="glyphicon glyphicon-road">
+				{{profile.friends_count}}
+				</span>
+				<br>
+				<br>
+
+				<span class="glyphicon glyphicon-bullhorn">
+				{{profile.statuses_count}}
+				</span>
+				<br>
+				<br>
+
+				<span class="glyphicon glyphicon-heart" style="color: rgb(212, 106, 64);">
+				{{profile.favourites_count}}
+				</span>
+				<br>
+				<br>
+
+				<br>
+
+				</p>
+
+	      	
+	      </div>
+              <div class="body body-content">
+		<div ng-repeat='tweet in tweets'>
+			<tweet currentTweet="tweet" class="well">
+				<img ng-src={{profile.image_mini}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="glyphicon glyphicon-retweet">
+					{{tweet.retweet_count}}
+				</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+				<span class="glyphicon glyphicon-star">
+					{{tweet.favorite_count}}
+				</span>
+
+				<br/>
+				<br/>
+				        <b>{{tweet.text}}</b>
+				<br/>
+				<br/>
+
+				<span class="glyphicon glyphicon-time">
+					{{tweet.created_at | epoch | date : 'fullDate'}}
+				</span>
+			</tweet>
+		</div>
+	      </div>
+	</div>
+</div>
+
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+ <script src="https://code.jquery.com/jquery.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>
+ <script src="js/app.js"></script>
+ <script src="js/profileController.js"></script>
+ <!-- Include all compiled plugins (below), or include individual files 
+ as needed -->
+ <script src="js/bootstrap.min.js"></script>
+ </body>
+</html>
