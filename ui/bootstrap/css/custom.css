@@ -52,3 +52,5 @@ body, html, .container-fluid, .sidebar, .body {
 
     position:relative;
 }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

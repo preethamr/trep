@@ -1,0 +1,16 @@
+To setup the backend using this git repo, there are just a few steps. You will need tweepy and flask-restful packages.
+
+#Install Packages
+#export $REPO_PATH=<path to this repo root>
+
+pip install tweepy
+pip install flask-restful
+export PYTHONPATH=$REPO_PATH/rep
+
+# Start services
+cd $REPO_PATH/
+python rep/api.py
+
+cd $REPO_PATH/ui/bootstrap/
+# HTTP server of your choice to serve the UI components.
+python -m SimpleHTTPServer 80

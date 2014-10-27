@@ -1,1 +1,1 @@
-var app = angular.module('TRep',['ngResource']);
+var app = angular.module('TRep',['ngResource', 'ui.bootstrap', 'angularSpinner']);
