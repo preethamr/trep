@@ -145,18 +145,15 @@ app.directive('tweet', function () {
 });
 
 app.factory('Tweets', function ($resource) {
-	//return $resource('http://repcheckr.net:5000/tweets/:id');
-	return $resource('http://127.0.0.1:5000/tweets/:id');
+	return $resource('http://repcheckr.net:5000/tweets/:id');
 });
 
 app.factory('Profile', function ($resource) {
-	//return $resource('http://repcheckr.net:5000/profile/:id');
-	return $resource('http://127.0.0.1:5000/profile/:id');
+	return $resource('http://repcheckr.net:5000/profile/:id');
 });
 
 app.factory('Score', function ($resource) {
-	//return $resource('http://repcheckr.net:5000/score/:id');
-	return $resource('http://127.0.0.1:5000/score/:id');
+	return $resource('http://repcheckr.net:5000/score/:id');
 });
 
 app.filter('epoch', function () {

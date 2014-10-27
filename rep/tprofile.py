@@ -9,9 +9,7 @@ from operator import attrgetter
 auth = tweepy.OAuthHandler(access.consumer_key, access.consumer_secret)
 auth.set_access_token(access.access_token, access.access_token_secret)
 
-max_page_size = 200
-max_tweets = 50000
-max_return = 250
+max_return = 600
 
 # Encapsulate operations on the active user
 class Profile:
@@ -19,7 +17,6 @@ class Profile:
     twitter = tweepy.API(auth)
     max_page_size = 200
     max_tweets = 30000
-    max_return = 250
 
 
 

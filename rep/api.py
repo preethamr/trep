@@ -65,7 +65,7 @@ class Tweets(Resource):
         if f['photo'] is None:
             f['photo'] = 0
 
-        if ['reverse'] is None:
+        if f['reverse'] is None:
             f['reverse'] = 1
 
         if f['key'] is None:
@@ -93,5 +93,4 @@ api.add_resource(Score, '/score/<string:user>', methods = ['GET'])
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
-    #app.run(debug=False, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0')
